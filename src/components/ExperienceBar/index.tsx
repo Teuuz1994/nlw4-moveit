@@ -1,13 +1,19 @@
-import { Header, Span, Line } from './style';
+import {
+  Header,
+  Span,
+  Line,
+  SpanExperience,
+  SpanExperienceConteiner,
+} from './style';
 
 const ExperienceBar = () => {
   return (
     <Header>
       <Span>8 xp</Span>
       <Line>
-        <div style={{ width: '60%' }}>
-          <Span style={{ left: '50%' }}>300 xp</Span>
-        </div>
+        <SpanExperienceConteiner width="50%">
+          <SpanExperience left="50%">300 xp</SpanExperience>
+        </SpanExperienceConteiner>
       </Line>
       <Span>600 xp</Span>
     </Header>

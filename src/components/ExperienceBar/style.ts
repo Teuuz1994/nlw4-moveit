@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface SpanExperienceProps {
+  left: string;
+}
+
+interface SpanExperienceConteinerProps {
+  width: string;
+}
 
 export const Header = styled.header`
   display: flex;
@@ -16,16 +24,32 @@ export const Line = styled.div`
   background: var(--gray-line);
   margin: 0 1.5rem;
   position: relative;
+`;
 
-  > div {
-    height: 4px;
-    border-radius: 4px;
-    background: var(--green);
+export const SpanExperienceConteiner = styled.div<SpanExperienceConteinerProps>`
+  ${({ width }) =>
+    width
+      ? css`
+          width: ${width};
+        `
+      : css`
+          width: 0;
+        `}
+  height: 4px;
+  border-radius: 4px;
+  background: var(--green);
+`;
 
-    > div span {
-      position: absolute;
-      top: 12px;
-      transform: translateX(-50%);
-    }
-  }
+export const SpanExperience = styled.span<SpanExperienceProps>`
+  position: absolute;
+  top: 12px;
+  ${({ left }) =>
+    left
+      ? css`
+          left: ${left};
+        `
+      : css`
+          left: 0;
+        `}
+  transform: translateX(-50%);
 `;
