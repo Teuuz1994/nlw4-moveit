@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface CicleButtonActionProps {
+  isActive: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -39,7 +43,7 @@ export const Separator = styled.span`
   margin: 0 0.5rem;
 `;
 
-export const StarCicloButton = styled.button`
+export const CicleButtonAction = styled.button<CicleButtonActionProps>`
   width: 100%;
   height: 5rem;
 
@@ -52,8 +56,16 @@ export const StarCicloButton = styled.button`
   border: 0;
   border-radius: 5px;
 
-  background: var(--blue);
-  color: var(--white);
+  ${({ isActive }) =>
+    isActive
+      ? css`
+          background: var(--white);
+          color: var(--title);
+        `
+      : css`
+          background: var(--blue);
+          color: var(--white);
+        `};
 
   font-size: 1.25rem;
   font-weight: 600;
@@ -61,6 +73,14 @@ export const StarCicloButton = styled.button`
   transition: background 0.2s;
 
   &:hover {
-    background: var(--blue-dark);
+    ${({ isActive }) =>
+      isActive
+        ? css`
+            background: var(--red);
+            color: var(--white);
+          `
+        : css`
+            background: var(--blue-dark);
+          `};
   }
 `;
