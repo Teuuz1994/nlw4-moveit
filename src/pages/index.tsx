@@ -1,10 +1,16 @@
-import { ExperienceBar, Profile, CompleteChallenges, CountDown } from '../components'
+import {
+  ExperienceBar,
+  Profile,
+  CompleteChallenges,
+  CountDown,
+} from '../components';
+import ChallengeBox from '../components/ChallengeBox';
 
-import { Section } from '../styles/pages/Home';
+import { Section, Container } from '../styles/pages/Home';
 
 export default function Home() {
   return (
-    <div className="container">
+    <Container>
       <ExperienceBar />
 
       <Section>
@@ -14,9 +20,9 @@ export default function Home() {
           <CountDown />
         </div>
         <div>
-
+          <ChallengeBox />
         </div>
       </Section>
-    </div>
-  )
+    </Container>
+  );
 }

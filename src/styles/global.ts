@@ -29,14 +29,6 @@ export default createGlobalStyle`
       font-size: 87.5%;
     }
   }
-  .container {
-    height: 100vh;
-    max-width: 992px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-  }
   body {
     background: var(--background);
     color: var(--text);
