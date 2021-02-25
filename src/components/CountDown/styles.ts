@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface CicleButtonActionProps {
   isActive: boolean;
+  hasFinished: boolean;
 }
 
 export const Container = styled.div`
@@ -56,15 +57,23 @@ export const CicleButtonAction = styled.button<CicleButtonActionProps>`
   border: 0;
   border-radius: 5px;
 
-  ${({ isActive }) =>
+  ${({ isActive, hasFinished }) =>
     isActive
       ? css`
           background: var(--white);
           color: var(--title);
         `
       : css`
-          background: var(--blue);
-          color: var(--white);
+          ${!hasFinished
+            ? css`
+                background: var(--blue);
+                color: var(--white);
+              `
+            : css`
+                background: var(--white);
+                color: var(--text);
+                cursor: not-allowed;
+              `}
         `};
 
   font-size: 1.25rem;
@@ -72,15 +81,17 @@ export const CicleButtonAction = styled.button<CicleButtonActionProps>`
 
   transition: background 0.2s;
 
-  &:hover {
-    ${({ isActive }) =>
-      isActive
-        ? css`
+  ${({ isActive }) =>
+    isActive
+      ? css`
+          &:not(:disabled):hover {
             background: var(--red);
             color: var(--white);
-          `
-        : css`
+          }
+        `
+      : css`
+          &:not(:disabled):hover {
             background: var(--blue-dark);
-          `};
-  }
+          }
+        `};
 `;
