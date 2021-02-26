@@ -23,9 +23,10 @@ interface ChallengeContext {
   currentExperience: number;
   challengeComplete: number;
   experienceToNextLevel: number;
-  levelUp(): void;
-  startNewChallenge(): void;
-  resetActiveChallenge(): void;
+  handleLevelUp(): void;
+  handleStartNewChallenge(): void;
+  handleResetActiveChallenge(): void;
+  handleCompleteChallenge(): void;
 }
 
 const ChallengeContext = createContext<ChallengeContext>(
@@ -43,20 +44,39 @@ export const ChallengeProvider = ({ children }: ChallengesProviderProps) => {
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
-  const levelUp = useCallback(() => {
+  const handleLevelUp = useCallback(() => {
     setLevel(prevState => prevState + 1);
   }, []);
 
-  const startNewChallenge = useCallback(() => {
+  const handleStartNewChallenge = useCallback(() => {
     const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
     const challenge = challenges[randomChallengeIndex];
 
     setActiveChallenge(challenge as Challenge);
   }, []);
 
-  const resetActiveChallenge = useCallback(() => {
+  const handleResetActiveChallenge = useCallback(() => {
     setActiveChallenge(null);
   }, []);
+
+  const handleCompleteChallenge = useCallback(() => {
+    if (!activeChallenge) {
+      return;
+    }
+
+    const { amount } = activeChallenge;
+
+    let finalExperience = currentExperience + amount;
+
+    if (finalExperience >= experienceToNextLevel) {
+      finalExperience = finalExperience - experienceToNextLevel;
+      handleLevelUp();
+    }
+
+    setCurrentExperience(finalExperience);
+    setActiveChallenge(null);
+    setChallengeComplete(prevState => prevState + 1);
+  }, [activeChallenge]);
 
   return (
     <ChallengeContext.Provider
@@ -66,9 +86,10 @@ export const ChallengeProvider = ({ children }: ChallengesProviderProps) => {
         activeChallenge,
         experienceToNextLevel,
         level,
-        levelUp,
-        startNewChallenge,
-        resetActiveChallenge,
+        handleLevelUp,
+        handleStartNewChallenge,
+        handleResetActiveChallenge,
+        handleCompleteChallenge,
       }}
     >
       {children}

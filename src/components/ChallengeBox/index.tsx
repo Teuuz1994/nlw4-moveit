@@ -16,7 +16,11 @@ import {
 } from './styles';
 
 const ChallengeBox = () => {
-  const { activeChallenge, resetActiveChallenge } = useChallenge();
+  const {
+    activeChallenge,
+    handleResetActiveChallenge,
+    handleCompleteChallenge,
+  } = useChallenge();
 
   return (
     <Container>
@@ -31,10 +35,12 @@ const ChallengeBox = () => {
           </Main>
 
           <Footer>
-            <FailedButton type="button" onClick={resetActiveChallenge}>
+            <FailedButton type="button" onClick={handleResetActiveChallenge}>
               Falhei
             </FailedButton>
-            <SuccessButton type="button">Completei</SuccessButton>
+            <SuccessButton type="button" onClick={handleCompleteChallenge}>
+              Completei
+            </SuccessButton>
           </Footer>
         </ChallengeActive>
       ) : (
