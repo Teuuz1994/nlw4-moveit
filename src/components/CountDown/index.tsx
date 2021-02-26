@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useState, useRef } from 'react';
+
+import { useChallenge } from '../../hooks/Challenge';
+
 import {
   Container,
   Count,
@@ -11,6 +14,8 @@ const CountDown = () => {
   const [time, setTime] = useState(0.1 * 60);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
+
+  const { startNewChallenge } = useChallenge();
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -38,6 +43,7 @@ const CountDown = () => {
     } else if (isActive && time === 0) {
       setHasFinished(true);
       setIsActive(false);
+      startNewChallenge();
     }
   }, [isActive, time]);
 

@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import GlobalStyles from '../styles/global';
+import { ChallengeProvider } from '../hooks/Challenge';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -8,10 +9,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Move - IT</title>
       </Head>
-      <Component {...pageProps}/>
+      <ChallengeProvider>
+        <Component {...pageProps} />
+      </ChallengeProvider>
       <GlobalStyles />
     </>
-  )
+  );
 };
 
 export default MyApp;

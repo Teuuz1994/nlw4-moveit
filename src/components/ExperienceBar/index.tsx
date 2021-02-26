@@ -1,3 +1,5 @@
+import { useChallenge } from '../../hooks/Challenge';
+
 import {
   Header,
   Span,
@@ -7,15 +9,22 @@ import {
 } from './style';
 
 const ExperienceBar = () => {
+  const { currentExperience, experienceToNextLevel } = useChallenge();
+
+  const percentToNextLevel =
+    Math.round(currentExperience * 100) / experienceToNextLevel;
+
   return (
     <Header>
       <Span>8 xp</Span>
       <Line>
-        <SpanExperienceConteiner width="50%">
-          <SpanExperience left="50%">300 xp</SpanExperience>
+        <SpanExperienceConteiner width={`${percentToNextLevel}%`}>
+          <SpanExperience left={`${percentToNextLevel}%`}>
+            {currentExperience} xp
+          </SpanExperience>
         </SpanExperienceConteiner>
       </Line>
-      <Span>600 xp</Span>
+      <Span>{experienceToNextLevel} xp</Span>
     </Header>
   );
 };
