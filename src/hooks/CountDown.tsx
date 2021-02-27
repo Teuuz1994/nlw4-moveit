@@ -46,6 +46,7 @@ export const CountDownProvider = ({ children }: CountDownProviderProps) => {
     clearTimeout(CountdownTimeOut.current);
     setIsActive(false);
     setTime(0.1 * 60);
+    setHasFinished(false);
   }, []);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export const CountDownProvider = ({ children }: CountDownProviderProps) => {
       setIsActive(false);
       handleStartNewChallenge();
     }
-  }, [isActive, time]);
+  }, [handleStartNewChallenge, isActive, time]);
 
   return (
     <ConstCountDownContext.Provider

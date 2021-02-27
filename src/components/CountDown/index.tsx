@@ -1,5 +1,3 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
-
 import { useCountDown } from '../../hooks/CountDown';
 
 import {

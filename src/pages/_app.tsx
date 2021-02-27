@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import GlobalStyles from '../styles/global';
-import AppProvider from '../hooks';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -9,9 +8,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Move - IT</title>
       </Head>
-      <AppProvider>
-        <Component {...pageProps} />
-      </AppProvider>
+
+      <Component {...pageProps} />
       <GlobalStyles />
     </>
   );

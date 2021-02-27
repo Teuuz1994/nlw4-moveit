@@ -82,9 +82,9 @@
   integrity sha512-uvoOulWHhI+0+1f9L4BoozY7U5cIkZ9PgJqvb041d6vypgUmtVPG4vmGm4pSggjl8BELzvHyUeJSUyEMY6b+qA==
 
 "@babel/runtime-corejs3@^7.10.2":
-  version "7.13.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.13.6.tgz#b7fea0fe5bb0ec92e78f2b5ed467a7bd30c53a84"
-  integrity sha512-wSbWQEOD7tk8zjRJVy41L85v+ctDk6AIv72hzVOyOhAeRSkzxKhamBP2jLPBYLYvLNgiJqa4gnpiYAIeedf/sA==
+  version "7.13.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.13.8.tgz#149749463be6692e3688584130e4300beba0e93c"
+  integrity sha512-iaInhjy1BbDnqc7pZiIXAfWvBnczgWobHceR4Wkhs5tWZG8aIazBYH0Vo73lixecHKh3Vy9yqbQBqVDrmcVDlQ==
   dependencies:
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
@@ -97,9 +97,9 @@
     regenerator-runtime "^0.13.4"
 
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2":
-  version "7.13.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.6.tgz#86e0fad6cbb46a680e21c1aa4748717a058d345a"
-  integrity sha512-Y/DEVhSQ91u27rxq7D0EH/sewS6+x06p/MgO1VppbDHMzYXLZrAR5cFjCom78e9RUw1BQAq6qJg6fXc/ep7glA==
+  version "7.13.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.8.tgz#cc886a85c072df1de23670dc1aa59fc116c4017c"
+  integrity sha512-CwQljpw6qSayc0fRG1soxHAKs1CnQMOChm4mlQP6My0kf9upVGizj/KhlTTgyUnETmHpcUXjaluNAkteRFuafg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -276,6 +276,11 @@
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
 
+"@types/js-cookie@^2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.6.tgz#f1a1cb35aff47bc5cfb05cb0c441ca91e914c26f"
+  integrity sha512-+oY0FDTO2GYKEV0YPvSshGq9t7YozVkgvXLty7zogQNuCxBhT9/3INX9Q7H1aRZ4SUDRXAKlJuA4EA5nTt7SNw==
+
 "@types/json-schema@^7.0.3":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
@@ -361,6 +366,16 @@
     "@typescript-eslint/typescript-estree" "4.15.2"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
+
+"@typescript-eslint/parser@^4.15.2":
+  version "4.15.2"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-4.15.2.tgz#c804474321ef76a3955aec03664808f0d6e7872e"
+  integrity sha512-SHeF8xbsC6z2FKXsaTb1tBCf0QZsjJ94H6Bo51Y1aVEZ4XAefaw5ZAilMoDPlGghe+qtq7XdTiDlGfVTOmvA+Q==
+  dependencies:
+    "@typescript-eslint/scope-manager" "4.15.2"
+    "@typescript-eslint/types" "4.15.2"
+    "@typescript-eslint/typescript-estree" "4.15.2"
+    debug "^4.1.1"
 
 "@typescript-eslint/scope-manager@4.15.2":
   version "4.15.2"
@@ -1287,10 +1302,10 @@ eslint-config-airbnb@^18.2.1:
     object.assign "^4.1.2"
     object.entries "^1.1.2"
 
-eslint-config-prettier@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.0.0.tgz#024d661444319686c588c8849c8da33815dbdb1c"
-  integrity sha512-5EaAVPsIHu+grmm5WKjxUia4yHgRrbkd8I0ffqUSwixCPMVBrbS97UnzlEY/Q7OWo584vgixefM0kJnUfo/VjA==
+eslint-config-prettier@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
+  integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
 
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
@@ -1551,9 +1566,9 @@ fast-levenshtein@^2.0.6:
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
 fastq@^1.6.0:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.10.1.tgz#8b8f2ac8bf3632d67afcd65dac248d5fdc45385e"
-  integrity sha512-AWuv6Ery3pM+dY7LYS8YIaCiQvUaos9OB1RyNgaOWnaX+Tik7Onvcsf8x8c+YtDeT0maYLniBip2hox5KtEXXA==
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.11.0.tgz#bb9fb955a07130a918eb63c1f5161cc32a5d0858"
+  integrity sha512-7Eczs8gIPDrVzT+EksYBcupqMyxSHXXrHOLRRxU2/DicV8789MRBRR8+Hc2uWzUupOs4YS4JzBmBxjjCVBxD/g==
   dependencies:
     reusify "^1.0.4"
 
@@ -1989,6 +2004,11 @@ jest-worker@24.9.0:
   dependencies:
     merge-stream "^2.0.0"
     supports-color "^6.1.0"
+
+js-cookie@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -3208,9 +3228,9 @@ string-width@^1.0.1:
     strip-ansi "^4.0.0"
 
 string-width@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.0.tgz#952182c46cc7b2c313d1596e623992bd163b72b5"
-  integrity sha512-zUz5JD+tgqtuDjMhwIg5uFVV3dtqZ9yQJlZVfq4I01/K5Paj5UHj7VyrQOJvzawSVlKpObApbfD0Ed6yJc+1eg==
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.1.tgz#1933ce1f470973d224368009bd1316cad81d5f4f"
+  integrity sha512-LL0OLyN6AnfV9xqGQpDBwedT2Rt63737LxvsRxbcwpa2aIeynBApG2Sm//F3TaLHIR1aJBN52DWklc06b94o5Q==
   dependencies:
     emoji-regex "^8.0.0"
     is-fullwidth-code-point "^3.0.0"

@@ -4,13 +4,17 @@ import {
   useContext,
   useState,
   useCallback,
+  useEffect,
 } from 'react';
+import Cookies from 'js-cookie';
 import challenges from '../../challenges.json';
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  level: number;
+  currentExperience: number;
+  challengeComplete: number;
 }
-
 interface Challenge {
   type: 'body' | 'eye';
   description: string;
@@ -33,10 +37,17 @@ const ChallengeContext = createContext<ChallengeContext>(
   {} as ChallengeContext,
 );
 
-export const ChallengeProvider = ({ children }: ChallengesProviderProps) => {
-  const [level, setLevel] = useState(1);
-  const [currentExperience, setCurrentExperience] = useState(0);
-  const [challengeComplete, setChallengeComplete] = useState(0);
+export const ChallengeProvider = ({
+  children,
+  ...rest
+}: ChallengesProviderProps) => {
+  const [level, setLevel] = useState(rest.level ?? 0);
+  const [currentExperience, setCurrentExperience] = useState(
+    rest.currentExperience ?? 0,
+  );
+  const [challengeComplete, setChallengeComplete] = useState(
+    rest.challengeComplete ?? 0,
+  );
 
   const [activeChallenge, setActiveChallenge] = useState<Challenge | null>(
     null,
@@ -53,6 +64,14 @@ export const ChallengeProvider = ({ children }: ChallengesProviderProps) => {
     const challenge = challenges[randomChallengeIndex];
 
     setActiveChallenge(challenge as Challenge);
+
+    new Audio('/notification.mp3').play();
+
+    if (Notification.permission === 'granted') {
+      new Notification('Novo desafio 🎉', {
+        body: `Valendo ${challenge.amount}xp!`,
+      });
+    }
   }, []);
 
   const handleResetActiveChallenge = useCallback(() => {
@@ -69,14 +88,29 @@ export const ChallengeProvider = ({ children }: ChallengesProviderProps) => {
     let finalExperience = currentExperience + amount;
 
     if (finalExperience >= experienceToNextLevel) {
-      finalExperience = finalExperience - experienceToNextLevel;
+      finalExperience -= experienceToNextLevel;
       handleLevelUp();
     }
 
     setCurrentExperience(finalExperience);
     setActiveChallenge(null);
     setChallengeComplete(prevState => prevState + 1);
-  }, [activeChallenge]);
+  }, [
+    activeChallenge,
+    currentExperience,
+    experienceToNextLevel,
+    handleLevelUp,
+  ]);
+
+  useEffect(() => {
+    Notification.requestPermission();
+  }, []);
+
+  useEffect(() => {
+    Cookies.set('level', String(level));
+    Cookies.set('currentExperience', String(currentExperience));
+    Cookies.set('challengeComplete', String(challengeComplete));
+  }, [level, currentExperience, challengeComplete]);
 
   return (
     <ChallengeContext.Provider

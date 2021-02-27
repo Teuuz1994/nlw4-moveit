@@ -1,4 +1,7 @@
+import { useCallback } from 'react';
+
 import { useChallenge } from '../../hooks/Challenge';
+import { useCountDown } from '../../hooks/CountDown';
 
 import {
   Container,
@@ -22,6 +25,18 @@ const ChallengeBox = () => {
     handleCompleteChallenge,
   } = useChallenge();
 
+  const { handleResetCountDown } = useCountDown();
+
+  const handleChallengeSucceeded = useCallback(() => {
+    handleCompleteChallenge();
+    handleResetCountDown();
+  }, [handleCompleteChallenge, handleResetCountDown]);
+
+  const handleChallengeFailed = useCallback(() => {
+    handleResetActiveChallenge();
+    handleResetCountDown();
+  }, [handleResetActiveChallenge, handleResetCountDown]);
+
   return (
     <Container>
       {activeChallenge ? (
@@ -29,16 +44,16 @@ const ChallengeBox = () => {
           <Header>Ganhe {activeChallenge.amount} xp</Header>
 
           <Main>
-            <img src={`icons/${activeChallenge.type}.svg`} />
+            <img src={`icons/${activeChallenge.type}.svg`} alt="Exercício" />
             <NewChallenge>Novo desafio</NewChallenge>
             <p>{activeChallenge.description}</p>
           </Main>
 
           <Footer>
-            <FailedButton type="button" onClick={handleResetActiveChallenge}>
+            <FailedButton type="button" onClick={handleChallengeFailed}>
               Falhei
             </FailedButton>
-            <SuccessButton type="button" onClick={handleCompleteChallenge}>
+            <SuccessButton type="button" onClick={handleChallengeSucceeded}>
               Completei
             </SuccessButton>
           </Footer>
