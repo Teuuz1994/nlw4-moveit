@@ -16,7 +16,7 @@ const ExperienceBar = () => {
 
   return (
     <Header>
-      <Span>8 xp</Span>
+      <Span>0 xp</Span>
       <Line>
         <SpanExperienceConteiner width={`${percentToNextLevel}%`}>
           <SpanExperience left={`${percentToNextLevel}%`}>
