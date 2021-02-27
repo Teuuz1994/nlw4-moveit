@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 100%;
 
-  background: var(--white);
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   padding: 1.5rem 2rem;
@@ -49,11 +49,11 @@ export const ChallengeActive = styled.div`
 `;
 
 export const Header = styled.header`
-  color: var(--blue);
+  color: ${({ theme }) => theme.colors.blue};
   font-weight: 600;
   font-size: 1.25rem;
   padding: 0 2rem 1.5rem;
-  border-bottom: 1px solid var(--gray-line);
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray_line};
 `;
 
 export const Main = styled.main`
@@ -71,7 +71,7 @@ export const Main = styled.main`
 export const NewChallenge = styled.strong`
   font-weight: 600;
   font-size: 2rem;
-  color: var(--title);
+  color: ${({ theme }) => theme.colors.title};
   margin: 1.5rem 0 1rem;
 `;
 
@@ -90,7 +90,7 @@ export const Footer = styled.footer`
     border: 0;
     border-radius: 5px;
 
-    color: var(--white);
+    color: ${({ theme }) => theme.colors.white};
 
     font-size: 1rem;
     font-weight: 600;
@@ -103,9 +103,9 @@ export const Footer = styled.footer`
 `;
 
 export const FailedButton = styled.button`
-  background: var(--red);
+  background: ${({ theme }) => theme.colors.red};
 `;
 
 export const SuccessButton = styled.button`
-  background: var(--green);
+  background: ${({ theme }) => theme.colors.green};
 `;

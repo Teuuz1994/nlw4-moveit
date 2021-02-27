@@ -21,7 +21,7 @@ export const Line = styled.div`
   flex: 1;
   height: 4px;
   border-radius: 4px;
-  background: var(--gray-line);
+  background: ${({ theme }) => theme.colors.gray_line};
   margin: 0 1.5rem;
   position: relative;
 `;
@@ -37,7 +37,7 @@ export const SpanExperienceConteiner = styled.div<SpanExperienceConteinerProps>`
         `}
   height: 4px;
   border-radius: 4px;
-  background: var(--green);
+  background: ${({ theme }) => theme.colors.green};
 `;
 
 export const SpanExperience = styled.span<SpanExperienceProps>`

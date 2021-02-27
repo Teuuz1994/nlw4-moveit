@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   font-family: Rajdhani;
   font-weight: 600;
-  color: var(--title);
+  color: ${({ theme }) => theme.colors.title};
 
   > div span:first-child {
     border-right: 1px solid #f8f1f3;
@@ -28,7 +28,7 @@ export const Count = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
-  background: var(--white);
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   font-size: 8.5rem;
@@ -60,18 +60,18 @@ export const CicleButtonAction = styled.button<CicleButtonActionProps>`
   ${({ isActive, hasFinished }) =>
     isActive
       ? css`
-          background: var(--white);
-          color: var(--title);
+          background: ${({ theme }) => theme.colors.white};
+          color: ${({ theme }) => theme.colors.title};
         `
       : css`
           ${!hasFinished
             ? css`
-                background: var(--blue);
-                color: var(--white);
+                background: ${({ theme }) => theme.colors.blue};
+                color: ${({ theme }) => theme.colors.white};
               `
             : css`
-                background: var(--white);
-                color: var(--text);
+                background: ${({ theme }) => theme.colors.white};
+                color: ${({ theme }) => theme.colors.text};
                 cursor: not-allowed;
               `}
         `};
@@ -85,13 +85,13 @@ export const CicleButtonAction = styled.button<CicleButtonActionProps>`
     isActive
       ? css`
           &:not(:disabled):hover {
-            background: var(--red);
-            color: var(--white);
+            background: ${({ theme }) => theme.colors.red};
+            color: ${({ theme }) => theme.colors.white};
           }
         `
       : css`
           &:not(:disabled):hover {
-            background: var(--blue-dark);
+            background: ${({ theme }) => theme.colors.blue_dark};
           }
         `};
 `;
